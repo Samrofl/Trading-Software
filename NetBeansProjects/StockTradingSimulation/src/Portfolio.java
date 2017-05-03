@@ -17,6 +17,7 @@ public class Portfolio
         clientID=counter;
         clientName = name;
         clientCash = cash;
+        clientRisk = Risk;
         clientAssets = new HashMap<>();
     }
 
