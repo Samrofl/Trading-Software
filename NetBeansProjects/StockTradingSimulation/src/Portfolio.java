@@ -10,6 +10,7 @@ public class Portfolio
     private int clientCash;
     private final HashMap<Stock,Integer> clientAssets;
     private HashMap<Stock,Integer> stockToSell;
+    private HashMap<Stock,Integer> stockToBuy;
     ArrayList<Stock> keysAsArray;
     private RiskLevel clientRisk;
     
@@ -23,6 +24,7 @@ public class Portfolio
         clientRisk = risk;
         clientAssets = new HashMap<>();
         stockToSell = new HashMap<>();
+        stockToBuy = new HashMap<>();
     }
 
     // class methods
@@ -138,8 +140,7 @@ public class Portfolio
                 if (!stockToSell.containsKey(stockToBeSold)){
                     //Test
                     stockToSell.put(stockToBeSold,amountToSell);
-                }
-                else{
+                } else{
                     amountToSell+=stockToSell.get(stockToBeSold);
                     stockToSell.put(stockToBeSold,amountToSell);
                 }
@@ -148,6 +149,15 @@ public class Portfolio
             }
         }
         return false;
+    }
+    
+    public void buyStock(Stock stockToBeBought, int amountToBuy){
+        if (!stockToBuy.containsKey(stockToBeBought)){
+                stockToBuy.put(stockToBeBought,amountToBuy);
+            } else{
+                amountToBuy+=stockToBuy.get(stockToBeBought);
+                stockToBuy.put(stockToBeBought,amountToBuy);
+            }
     }
     
     // this method searches through each stock in the clients portfolio and if a stock has a price of 0 it removes that stock from the portfolio.
@@ -172,6 +182,10 @@ public class Portfolio
     //Returns stockToSell hashmap
     public HashMap<Stock,Integer> getToBeSold(){
         return stockToSell;
+    }
+
+    public HashMap<Stock, Integer> getStockToBuy() {
+        return stockToBuy;
     }
     
     

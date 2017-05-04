@@ -112,6 +112,10 @@ public class Run {
             randomTraders.get(i).sell();
         }
         
+        for(int i=0;i<randomTraders.size();i++){
+            randomTraders.get(i).buy();
+        }
+        
         //Add elements to for sale hashmap
         for(int i=0;i<randomTraders.size();i++){
             for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
@@ -119,8 +123,19 @@ public class Run {
             }
         }
         
+        //Add elements to for purchase hashmap
+        for(int i=0;i<randomTraders.size();i++){
+            for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
+                exchange.addToBuy(randomTraders.get(i).getClient(j).getStockToBuy());
+            }
+        }
+        
         //Print the hashmap to test it.
-        exchange.printHashMap();
+        System.out.println("FOR SALE");
+        exchange.printForSale();
+        System.out.println("\nTO BUY");
+        exchange.printToBuy();
+        
         
         //This runs the market for the year.
         while (market.getMonth()!=13){

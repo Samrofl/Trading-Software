@@ -18,9 +18,11 @@ public class TradingExchange {
     
     private float shareIndex;
     private HashMap<Stock,Integer> forSale;
+    private HashMap<Stock,Integer> toBuy;
     
     public TradingExchange(){
         forSale = new HashMap();
+        toBuy = new HashMap();
     }
 
     /**public void addCompany(Stock stock){
@@ -65,16 +67,40 @@ public class TradingExchange {
             }
         }
     }
+    
+    public void addToBuy(HashMap<Stock,Integer> forPurchase){
+        for(Map.Entry<Stock,Integer> entry : forPurchase.entrySet()) {
+            Stock stock = entry.getKey();
+            int amount = entry.getValue();
+            
+            if(toBuy.containsKey(stock)){
+                int currentAmount = forSale.get(stock);
+                amount = amount+currentAmount;
+                toBuy.put(stock, amount);
+            }
+            else{
+                toBuy.put(stock,amount);
+            }
+        }
+    }
 
     public HashMap<Stock, Integer> getForSale() {
         return forSale;
     }
     
     //TEST METHOD
-    public void printHashMap(){
+    public void printForSale(){
         for(Stock s : forSale.keySet()){
             String key = s.getStockName();
             String value = forSale.get(s).toString();
+            System.out.println(key + " : " + value);
+        }
+    }
+    
+    public void printToBuy(){
+        for(Stock s : toBuy.keySet()){
+            String key = s.getStockName();
+            String value = toBuy.get(s).toString();
             System.out.println(key + " : " + value);
         }
     }

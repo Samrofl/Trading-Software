@@ -5,7 +5,6 @@ public class Company
     private CompanyType companyType;
     private RiskLevel companyRisk;
     private int stockCount;
-    private float stockValue;
     private boolean isInsolvent;
     private Stock stock;
     private static int counter=0;
@@ -20,7 +19,7 @@ public class Company
         companyType = type;
         companyRisk = risk;
         stockCount = totalShares;
-        stockValue = (sharePrice/100);
+        float stockValue = (sharePrice/100);
         isInsolvent = false;
         stock = new Stock(companyID, name, stockValue);
     }
@@ -87,5 +86,9 @@ public class Company
     
     public Stock getStock(){
         return stock;
+    }
+    
+    public float getSharePrice(){
+        return getStock().getPrice();
     }
 }
