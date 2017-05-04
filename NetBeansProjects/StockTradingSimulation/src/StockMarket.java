@@ -1,4 +1,5 @@
 /**
+ * this class is used to model a stock market in our stock market simulation.
  *
  * @author Sam Berkay, Navtej Bhogal
  * @version 1.0, 03 may 2017
