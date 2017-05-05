@@ -1,3 +1,8 @@
+
+/**
+ *
+ * @author sb
+ */
 public class Company 
 {
     // class variables
@@ -11,7 +16,15 @@ public class Company
     private static int counter=0;
     private int companyID;
 
-    // class constructor
+
+    /**
+     * class constructor
+     * @param name
+     * @param type
+     * @param risk
+     * @param totalShares
+     * @param sharePrice
+     */
     public Company(String name, CompanyType type, RiskLevel risk, int totalShares, float sharePrice) 
     {
         counter++;
@@ -25,66 +38,106 @@ public class Company
         stock = new Stock(companyID, name, stockValue);
     }
     
-    // class methods
-    
-    // this method is used to assign a new name to the companyName attribute 
+
+    /**
+     * This method is used to assign a new name to the companyName attribute 
+     * @param newName
+     */
     public void setName(String newName)
     {
         companyName = newName;
     }
     
-    // this method returns the current CompanyName value
+
+    /** 
+     * This method returns the current CompanyName value
+     * @return
+     */
     public String getName()
     {
         return companyName;
     }
     
-    // this method is used to assign a new type to the companyType attribute
+
+    /**
+     * this method is used to assign a new type to the companyType attribute
+     * @param type
+     */
     public void setType(CompanyType type)
     {
         companyType = type;
     }
     
-    // this method returns the current CompanyType value
+
+    /**
+     * this method returns the current CompanyType value
+     * @return
+     */
     public CompanyType getType()
     {
         return companyType;
     }
     
-    // this method is used to assign a risk level to the CompanyRisk attribute
+
+    /**
+     * This method is used to assign a risk level to the CompanyRisk attribute
+     * @param risk
+     */
     public void setRisk(RiskLevel risk)
     {
         companyRisk = risk;
     }
     
-    // this method returns the current companyRisk value.
+
+    /**
+     * this method returns the current companyRisk value.
+     * @return
+     */
     public RiskLevel getRisk()
     {
         return companyRisk;
     }
     
-    // i am not sure how this is to be implemented so i have left it blank...
+
+    /**
+     * Unused issueStock method from the class diagram
+     */
     public void issueStock()
     {
         
     }
     
-    // this method is used to make a company object insolvent.
+
+    /**
+     * this method is used to make a company object insolvent.
+     */
     public void setInsolvent()
     {
         isInsolvent = true;
     }
     
-    // this method is used to check if a company object is insolvent.
+
+    /**
+     * this method is used to check if a company object is insolvent.
+     * @return
+     */
     public boolean isCompanyInsolvent()
     {
         return isInsolvent;
     }
 
+    /**
+     * Get method to return a companyID
+     * @return
+     */
     public int getCompanyID() {
         return companyID;
     }
     
+    /**
+     * return method to return the company's stock object
+     * @return
+     */
     public Stock getStock(){
         return stock;
     }

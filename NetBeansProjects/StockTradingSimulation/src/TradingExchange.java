@@ -21,30 +21,20 @@ public class TradingExchange {
     private HashMap<Stock,Integer> toBuy;
     private HashMap<Stock,Integer> supplyDemand;
     
+    /**
+     *
+     */
     public TradingExchange(){
         forSale = new HashMap();
         toBuy = new HashMap();
         supplyDemand = new HashMap();
     }
-
-    /**public void addCompany(Stock stock){
-        //Need to fill.
-    }*/
     
-    /**public void removeInsolventCompany(){
-     * //Need to fill
+    /**
+     * Big trade method to be called each iteration of the program.
+     * This method is incomplete, it cannot handle any instances where a portfolio cannot sell / buy everything it wants to.
+     * @param clients
      */
-    
-    /**public void issueStock(){
-        //Need to fill
-    }*/
-    
-    /**public void updateSharePrice(Stock stock){
-        //Need to fill.
-    }*/
-    
-    //Big trade method to be called each iteration of the program.
-    //This method is incomplete, it cannot handle any instances where a portfolio cannot sell / buy everything it wants to.
     public void trade(ArrayList<Portfolio> clients){
         for(Portfolio p : clients){ 
             for(Map.Entry<Stock,Integer> entry : p.getToBeSold().entrySet()){//Deal with sales
@@ -60,8 +50,14 @@ public class TradingExchange {
                 }
             } 
         }
-    }    
-    //Getter methods
+    }
+    
+
+    /**
+     * Get method to return the share index
+     * @param companies
+     * @return
+     */
     public float getShareIndex(ArrayList<Company> companies) {
         for(Company company: companies){
             shareIndex += company.getStock().getPrice();
@@ -70,6 +66,10 @@ public class TradingExchange {
         return shareIndex;
     }
     
+    /**
+     * Method to add stocks to the forSale hashmap
+     * @param toSell
+     */
     public void addForSale(HashMap<Stock,Integer> toSell){
         
         for(Map.Entry<Stock,Integer> entry : toSell.entrySet()) {
@@ -87,6 +87,10 @@ public class TradingExchange {
         }
     }
     
+    /**
+     * Method to add stocks to the toBuy hashmap
+     * @param forPurchase
+     */
     public void addToBuy(HashMap<Stock,Integer> forPurchase){
         for(Map.Entry<Stock,Integer> entry : forPurchase.entrySet()) {
             Stock stock = entry.getKey();
@@ -103,10 +107,18 @@ public class TradingExchange {
         }
     }
 
+    /**
+     * Get method to return the forSale hashmap
+     * @return
+     */
     public HashMap<Stock, Integer> getForSale() {
         return forSale;
     }
     
+    /**
+     * Method to calculate the total supply and demand
+     * @param companyList
+     */
     public void calculateSupplyDemand(ArrayList<Company> companyList){
         
         for(Stock stock1: toBuy.keySet()){
@@ -140,8 +152,10 @@ public class TradingExchange {
         }
         printSupplyDemand();        
     }
-    
-    //Print methods for 
+
+    /**
+     * Print method for testing 
+     */
     public void printForSale(){
         for(Stock s : forSale.keySet()){
             String key = s.getStockName();
@@ -150,6 +164,9 @@ public class TradingExchange {
         }
     }
     
+    /**
+     * Print method for testing
+     */
     public void printToBuy(){
         for(Stock s : toBuy.keySet()){
             String key = s.getStockName();
@@ -158,6 +175,9 @@ public class TradingExchange {
         }
     }
     
+    /**
+     * Print method for testing
+     */
     public void printSupplyDemand(){
         for(Stock s : supplyDemand.keySet()){
             String key = s.getStockName();

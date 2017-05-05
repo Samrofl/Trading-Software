@@ -1,11 +1,21 @@
+
+/**
+ *
+ * @author sb
+ */
 public class Stock 
 {
     // class variables
     private int stockID;
     private String companyName;
     private float stockPrice;
-    
-    // class constructor
+
+    /**
+     * class constructor
+     * @param id
+     * @param name
+     * @param value
+     */
     public Stock(int id, String name, float value) 
     {
         stockID=id;
@@ -13,27 +23,38 @@ public class Stock
         stockPrice = value;
     }
     
-    // class methods
-    
-    // this method is used to assign a new name to the current companyName attribute
+
+    /**
+     * Set method to assign a stockName
+     * @param newName
+     */
     public void setStockName(String newName)
     {
         companyName = newName;
     }
-    
-    // this method returns the stock objects current companyName value.
+
+    /**
+     * This method returns the stock objects current companyName value.
+     * @return
+     */
     public String getStockName()
     {
         return companyName;
     }
     
-    // this method is used to assign a new value to the stock objects stockPrice attribute
+    /**
+     * This method is used to assign a new value to the stock objects stockPrice attribute
+     * @param newStockPrice
+     */
     public void updateStockPrice(float newStockPrice)
     {
         stockPrice = newStockPrice;
     }
-    
-    // this method returns the sock objects current stockPrice value
+
+    /**
+     * This method returns the sock objects current stockPrice value
+     * @return
+     */
     public float getPrice()
     {
         return stockPrice;

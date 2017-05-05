@@ -12,10 +12,30 @@ import java.util.ArrayList;
  * @author sb
  */
 public class Run {
+
+    /**
+     * Initialise the trading exchange object
+     */
     public static TradingExchange exchange;
+
+    /**
+     * Initialise the stockmarket object
+     */
     public static StockMarket market;
+
+    /**
+     * Arraylist to store the portfolios
+     */
     public static ArrayList<Portfolio> portfolios = new ArrayList();
+
+    /**
+     * Arraylist to store the companies
+     */
     public static ArrayList<Company> companies = new ArrayList();
+
+    /**
+     * ArrayList to store the traders
+     */
     public static ArrayList<RandomTrader> randomTraders = new ArrayList();
     private static final int data[][]={
         {1505,0,1456,0,8464,4336,6424,6479,0,4827,0,4551,0,7774,109,4656,5344,5576,3181,9496},
@@ -29,13 +49,18 @@ public class Run {
         {2304,0,0,0,2447,1611,0,4188,1206,6464,0,6772,6332,9579,8315,4216,8622,6728,0,8969},
         {8284,0,7348,6000,5735,8789,0,9446,0,7102,1042,5482,4548,0,5441,7604,0,7648,0,7513}};
         
-    
-    
+    /**
+     *
+     */
     public Run(){
         exchange = new TradingExchange();
         market = new StockMarket();
     }
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Run run = new Run();
         //Initialise portfolios
@@ -101,48 +126,35 @@ public class Run {
         randomTraders.get(2).addClient(portfolios.get(7));
         randomTraders.get(3).addClient(portfolios.get(8));
         randomTraders.get(3).addClient(portfolios.get(9));
-        
-        //Print share index to test it
-        System.out.println(exchange.getShareIndex(companies));
-        
-        System.out.println(randomTraders.get(0).getTotalAssets() + "\n ----");
-        
-        //Perform initial transaction
-        for(int i=0;i<randomTraders.size();i++){
-            randomTraders.get(i).sell();
-        }
-        
-        for(int i=0;i<randomTraders.size();i++){
-            randomTraders.get(i).buy();
-        }
-        
-        //Add elements to for sale hashmap
-        for(int i=0;i<randomTraders.size();i++){
-            for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
-                exchange.addForSale(randomTraders.get(i).getClient(j).getToBeSold());
-            }
-        }
-        
-        //Add elements to for purchase hashmap
-        for(int i=0;i<randomTraders.size();i++){
-            for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
-                exchange.addToBuy(randomTraders.get(i).getClient(j).getStockToBuy());
-            }
-        }
-        
-        //Print the hashmap to test it.
-        System.out.println("FOR SALE");
-        exchange.printForSale();
-        System.out.println("\nTO BUY");
-        exchange.printToBuy();
-        System.out.println("\nSUPPLY/DEMAND");
-        exchange.calculateSupplyDemand(companies);
-        exchange.trade(portfolios);
+       
         
         
         //This runs the market for the year.
         while (market.getMonth()!=13){
             market.incrementTime();
+            if(!market.isHoliday()){   
+                //Perform initial transaction
+            for(int i=0;i<randomTraders.size();i++){
+                randomTraders.get(i).sell();
+            }
+            for(int i=0;i<randomTraders.size();i++){
+                randomTraders.get(i).buy();
+            }
+            //Add elements to for sale hashmap
+            for(int i=0;i<randomTraders.size();i++){
+                for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
+                    exchange.addForSale(randomTraders.get(i).getClient(j).getToBeSold());
+                }
+            }
+
+            //Add elements to for purchase hashmap
+            for(int i=0;i<randomTraders.size();i++){
+                for(int j=0;j<randomTraders.get(i).getPortfolioSize();j++){
+                    exchange.addToBuy(randomTraders.get(i).getClient(j).getStockToBuy());
+                }
+            }
+               exchange.trade(portfolios);
+            }
             //System.out.println(market.isHoliday() + "-" + market.getWeekdayName(market.getWeekdays(), market.getWeekday()) + " " + market.getDay() + "-" + market.getMonth() + " " + String.format("%02d",market.getHour()) + ":" + String.format("%02d", market.getMinute()));
         }
     }

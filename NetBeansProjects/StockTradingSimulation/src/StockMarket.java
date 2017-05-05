@@ -10,24 +10,65 @@
  */
 public class StockMarket {
 
+    /**
+     * Month variable
+     */
     public int month = 1;
+
+    /**
+     * Day  Variable
+     */
     public int day = 1;
+
+    /**
+     * Weekday variable
+     */
     public int weekday = 6;
+
+    /**
+     * Hour variable
+     */
     public int hour = 0;
+
+    /**
+     * Minute variable
+     */
     public int minute = 0;
+
+    /**
+     * Weekdays array
+     */
     public String[] weekdays = {"Mon","Tues","Wed","Thu","Fri","Sat","Sun"};
+
+    /**
+     * Boolean variable to represent leap year
+     */
     public boolean isLeapYear=false;
+
+    /**
+     *Boolean variable to represent holidays
+     */
     public boolean holiday = false;
+
+    /**
+     * Enum variable to represent the marketType
+     */
     public MarketType marketType = MarketType.STABLE;
     
     //General method to increment the time by recursively calling methods.
+
+    /**
+     * Increments the time by 15 minutes and checks to see if it is a holiday.
+     */
     public void incrementTime()
     {
         checkHoliday(); //Check to see whether it is a holiday on the first day of trading 
         incrementMinutes();
     }
-    
-    //Specific method to increment the minutes.
+
+    /**
+     * Specific method to increment the minutes.
+     */
     public void incrementMinutes()
     {
         //Reset minute timer to zero and increase the hour if appropriate.
@@ -39,8 +80,10 @@ public class StockMarket {
             incrementHour();
         }
     }
-    
-    //Specific method to increment the hours.
+
+    /**
+     * Specific method to increment the hours.
+     */
     public void incrementHour() {
         //Reset hour timer to zero and increase the day if appropriate.
         if (hour!=23){
@@ -51,8 +94,10 @@ public class StockMarket {
             incrementDay();
         }
     }
-    
-    //Specific method to increment the days
+
+    /**
+     * Specific method to increment the days
+     */
     public void incrementDay() {
         //If the month has 31 days, reset the day count and increment the month when the end of the month is reached.
         if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day == 31){
@@ -91,8 +136,10 @@ public class StockMarket {
         }
         checkHoliday();
     }
-    
-    //Increments the weekdays to make add weekend functionality to close markets on the weekend
+
+    /**
+     * Increments the weekdays to make add weekend functionality to close markets on the weekend
+     */
     public void incrementWeekDay(){
         weekday++;
         if (weekday == 7) {
@@ -100,14 +147,17 @@ public class StockMarket {
         }
         
     }
-    
-    //Method to increment the month
+
+    /**
+     * Method to increment the month
+     */
     public void incrementMonth() {
         month++;
     }
-    
-    
-    //Method to check whether it is currently a holiday or not.
+
+    /**
+     * Method to check whether it is currently a holiday or not.
+     */
     public void checkHoliday() {
         if(weekday == 5 || weekday ==6)
         {
@@ -126,55 +176,95 @@ public class StockMarket {
         }
         
     }
-    
-    //Setter methods.
+
+    /**
+     * Setter method to assign a holiday
+     * @param holiday
+     */
     public void setHoliday(boolean holiday) {
         this.holiday = holiday;
     }
-    
-    //Getter methods.
+
+    /**
+     * Getter method to return the month
+     * @return
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     * Getter method to return the day
+     * @return
+     */
     public int getDay() {
         return day;
     }
 
+    /**
+     * Getter method to return the hour
+     * @return
+     */
     public int getHour() {
         return hour;
     }
 
+    /**
+     * Getter method to return the minute
+     * @return
+     */
     public int getMinute() {
         return minute;
     }
 
+    /**
+     * Getter method to return the leap year
+     * @return
+     */
     public boolean getLeapYear() {
         return isLeapYear;
     }
     
+    /**
+     * Getter method to return the weekday
+     * @return
+     */
     public int getWeekday() {
         return weekday;
     }
 
+    /**
+     * Getter method to return the weekdays array
+     * @return
+     */
     public String[] getWeekdays() {
         return weekdays;
     }
-    
-    //This method returns the correct string for the day of the week on any given day in the year.
+
+    /**
+     * This method returns the correct string for the day of the week on any given day in the year.
+     * @param array
+     * @param i
+     * @return
+     */
     public String getWeekdayName(String[] array, int i) {
         return array[i];
     }
 
+    /**
+     * Getter method to find if it is a holiday or not
+     * @return
+     */
     public boolean isHoliday() {
         return holiday;
     }
 
+    /**
+     * Getter method for the market type
+     * @return
+     */
     public MarketType getMarketType() {
         return marketType;
     }
-    
-    
-    
     
 }

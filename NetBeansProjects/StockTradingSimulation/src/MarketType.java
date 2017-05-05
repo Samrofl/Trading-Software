@@ -8,5 +8,19 @@
  * @author sb
  */
 public enum MarketType {
-    BULL, BEAR, STABLE;
+
+    /**
+     *
+     */
+    BULL,
+
+    /**
+     *
+     */
+    BEAR,
+
+    /**
+     *
+     */
+    STABLE;
 }
