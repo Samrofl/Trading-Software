@@ -14,21 +14,21 @@ public abstract class Trader
 
     /**
      * Abstract method to get the client.
-     * @param i
-     * @return
+     * @param i Integer to find the client
+     * @return Client object
      */
     
     public abstract Portfolio getClient(int i);
     
     /**
      * Abstract method to add a client to the trader
-     * @param client
+     * @param client CLient to be added
      */
     public abstract void addClient(Portfolio client);
     
     /**
      * Abstract method to remove a client from the trader
-     * @param id
+     * @param id ID of client to be removed
      */
     public abstract void removeClient(int id);
     
@@ -45,7 +45,7 @@ public abstract class Trader
     
     /**
      * Abstract method to get the total assets of the trader
-     * @return
+     * @return Returns the total assets of the stock
      */
     public abstract float getTotalAssets();
 }

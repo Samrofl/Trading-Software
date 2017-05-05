@@ -12,9 +12,9 @@ public class Stock
 
     /**
      * class constructor
-     * @param id
-     * @param name
-     * @param value
+     * @param id ID of the stock
+     * @param name Name of the stock
+     * @param value The stocks starting value
      */
     public Stock(int id, String name, float value) 
     {
@@ -26,7 +26,7 @@ public class Stock
 
     /**
      * Set method to assign a stockName
-     * @param newName
+     * @param newName New name for the stock
      */
     public void setStockName(String newName)
     {
@@ -35,7 +35,7 @@ public class Stock
 
     /**
      * This method returns the stock objects current companyName value.
-     * @return
+     * @return The current stock name
      */
     public String getStockName()
     {
@@ -44,7 +44,7 @@ public class Stock
     
     /**
      * This method is used to assign a new value to the stock objects stockPrice attribute
-     * @param newStockPrice
+     * @param newStockPrice The new value of the stock
      */
     public void updateStockPrice(float newStockPrice)
     {
@@ -53,7 +53,7 @@ public class Stock
 
     /**
      * This method returns the sock objects current stockPrice value
-     * @return
+     * @return The current value of the stock
      */
     public float getPrice()
     {

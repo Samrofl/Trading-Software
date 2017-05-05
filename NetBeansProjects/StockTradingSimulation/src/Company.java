@@ -19,11 +19,11 @@ public class Company
 
     /**
      * class constructor
-     * @param name
-     * @param type
-     * @param risk
-     * @param totalShares
-     * @param sharePrice
+     * @param name Name of the company
+     * @param type The type of company
+     * @param risk The risk associated with the company
+     * @param totalShares The total shares the company has to offer
+     * @param sharePrice The current share value of the company
      */
     public Company(String name, CompanyType type, RiskLevel risk, int totalShares, float sharePrice) 
     {
@@ -41,7 +41,7 @@ public class Company
 
     /**
      * This method is used to assign a new name to the companyName attribute 
-     * @param newName
+     * @param newName The new company name
      */
     public void setName(String newName)
     {
@@ -51,7 +51,7 @@ public class Company
 
     /** 
      * This method returns the current CompanyName value
-     * @return
+     * @return The current company name
      */
     public String getName()
     {
@@ -61,7 +61,7 @@ public class Company
 
     /**
      * this method is used to assign a new type to the companyType attribute
-     * @param type
+     * @param type The type of the company
      */
     public void setType(CompanyType type)
     {
@@ -71,7 +71,7 @@ public class Company
 
     /**
      * this method returns the current CompanyType value
-     * @return
+     * @return The current type of the company
      */
     public CompanyType getType()
     {
@@ -81,7 +81,7 @@ public class Company
 
     /**
      * This method is used to assign a risk level to the CompanyRisk attribute
-     * @param risk
+     * @param risk The new risk level of the company
      */
     public void setRisk(RiskLevel risk)
     {
@@ -91,7 +91,7 @@ public class Company
 
     /**
      * this method returns the current companyRisk value.
-     * @return
+     * @return The risk level of the company
      */
     public RiskLevel getRisk()
     {
@@ -119,7 +119,7 @@ public class Company
 
     /**
      * this method is used to check if a company object is insolvent.
-     * @return
+     * @return Whether the company is insolvent
      */
     public boolean isCompanyInsolvent()
     {
@@ -128,7 +128,7 @@ public class Company
 
     /**
      * Get method to return a companyID
-     * @return
+     * @return The Company's ID
      */
     public int getCompanyID() {
         return companyID;
@@ -136,7 +136,7 @@ public class Company
     
     /**
      * return method to return the company's stock object
-     * @return
+     * @return The company's stock object
      */
     public Stock getStock(){
         return stock;

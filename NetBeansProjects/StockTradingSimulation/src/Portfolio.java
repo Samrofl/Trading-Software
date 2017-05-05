@@ -20,9 +20,9 @@ public class Portfolio
 
     /**
      * class constructors  
-     * @param name
-     * @param cash
-     * @param risk
+     * @param name Name of the company
+     * @param cash Company's starting cash
+     * @param risk Company's risk level
      */
     public Portfolio(String name, float cash, RiskLevel risk) 
     {
@@ -39,7 +39,7 @@ public class Portfolio
 
     /**
      * this method is used to reassign the current name of the portfolio object
-     * @param name
+     * @param name New name of the client
      */
     public void setName(String name)
     {
@@ -48,7 +48,7 @@ public class Portfolio
 
     /**
      *this method is used to get the current name attribute of the portfolio object
-     * @return
+     * @return Clients name
      */
     public String getName()
     {
@@ -58,7 +58,7 @@ public class Portfolio
 
     /**
      *This method is used to see what the current amount of cash the client has in their portfolio
-     * @return
+     * @return Clients cash
      */
     public float getCash()
     {
@@ -66,19 +66,16 @@ public class Portfolio
     }
     /**
      * This method is used to add more cash to the clients portfolio
-     * @param cash
+     * @param cash Cash to be added to the client
      */
     public void addCash(float cash)
     {
         clientCash += cash;
     }
-    
-    // this method is used to take out money from the clients portfolio
-    // note if you try to withdraw more cash the client currently has then this method returns 0.
 
     /**
-     *
-     * @param amountToWithDraw
+     * This method is used to take out money from the clients portfolio
+     * @param amountToWithDraw Cash to be taken away from the client
      */
     public void withdrawCash(float amountToWithDraw)
     {
@@ -95,7 +92,7 @@ public class Portfolio
 
     /**
      * this method returns the total value of all of the ass1ets which the client currently has in their portfolio.
-     * @return
+     * @return Total value of the clients assets
      */
     public float getAssetValue()
     {
@@ -111,7 +108,7 @@ public class Portfolio
     
     /**
      * this method returns the total net worth of the client.
-     * @return
+     * @return Total worth of the cleient
      */
     public float getTotalWorth()
     {
@@ -121,7 +118,7 @@ public class Portfolio
 
     /**
      * this method returns the clients current prefered risk level
-     * @return
+     * @return Clients risk level
      */
     public RiskLevel getRiskLevel()
     {
@@ -131,7 +128,7 @@ public class Portfolio
 
     /**
      * this method is used to change the clients risk level
-     * @param RiskLevel
+     * @param RiskLevel Clients new risk level
      */
     public void setRiskLevel(RiskLevel RiskLevel)
     {
@@ -140,33 +137,29 @@ public class Portfolio
     
     /**
      * Getter for client id
-     * @return
+     * @return Clients ID
      */
     public int getClientID(){
         return clientID;
     }
     
     /**
-     * Returns specified stock object
-     * @param s
-     * @return
+     * Returns specified stock object's count
+     * @param s Stock to be found
+     * @return Stock count
      */
     public int getStockCount(Stock s){
         return clientAssets.get(s);
     }
     
-    // this method is used to add stock in the clients portfolio
-    // if the stockToAdd parameter already exists in the portfolio then this method increases that stock amount by the 'amount' parameter
-    // if the stockToAdd parameter does not exist this method creates a new key value pair consisting of the stockToAdd + amount parameters
-    // and inserts them into the clientsAssets hashmap.
 
     /**
      * this method is used to add stock in the clients portfolio
      * if the stockToAdd parameter already exists in the portfolio then this method increases that stock amount by the 'amount' parameter
      * if the stockToAdd parameter does not exist this method creates a new key value pair consisting of the stockToAdd + amount parameters
      * and inserts them into the clientsAssets hashmap.
-     * @param stockToAdd
-     * @param amount
+     * @param stockToAdd Stock to be added
+     * @param amount Amount of stock to be added
      */
     public void addStock(Stock stockToAdd, int amount)
     {
@@ -187,11 +180,10 @@ public class Portfolio
      * if the stockToBeSold parameter does not exist in the portfolio this method returns false indicating that this method did not sucessfully complete
      * if the stockToBeSold parameter does exist but the amountToSell exceeds the amount of that stock which the portfolio currently holds, again we return false.
      * if the stockToBeSold parameter does exist and we the amountToSell parameter is within the acceptable range this method returns true 
-     * @param stockToBeSold
-     * @param amountToSell
-     * @return
+     * @param stockToBeSold Stock to be sold
+     * @param amountToSell Amount of stock to be sold
      */
-    public boolean sellStock(Stock stockToBeSold, int amountToSell)
+    public void sellStock(Stock stockToBeSold, int amountToSell)
     {
         if (clientAssets.containsKey(stockToBeSold))
         {
@@ -207,16 +199,14 @@ public class Portfolio
                     stockToSell.put(stockToBeSold,amountToSell);
                 }
                 clientAssets.put(stockToBeSold, newStockQuantity);
-                return true;
             }
         }
-        return false;
     }
     
     /**
      * This method buys a specific amount of stock and adds it to the toBeBought hashmap
-     * @param stockToBeBought
-     * @param amountToBuy
+     * @param stockToBeBought Stock to be purchased
+     * @param amountToBuy Amount of stock to be purchased
      */
     public void buyStock(Stock stockToBeBought, int amountToBuy){
         if (!stockToBuy.containsKey(stockToBeBought)){
@@ -245,8 +235,8 @@ public class Portfolio
     /**
      * Returns the stock based on integer value to find in the arraylist.
      * Used for selling / buying.
-     * @param i
-     * @return
+     * @param i Integer value to find the stock
+     * @return Stock found by integer value
      */
     public Stock getStock(int i){
         return keysAsArray.get(i);
@@ -255,7 +245,7 @@ public class Portfolio
 
     /**
      * Returns stockToSell hashmap
-     * @return
+     * @return Stock to sell hashmap
      */
     public HashMap<Stock,Integer> getToBeSold(){
         return stockToSell;
@@ -263,7 +253,7 @@ public class Portfolio
 
     /**
      * Returns stockToBuy hashmap
-     * @return
+     * @return Stock to buy hashmap
      */
     public HashMap<Stock, Integer> getStockToBuy() {
         return stockToBuy;
@@ -271,7 +261,7 @@ public class Portfolio
     
     /**
      * Returns the number of unique stocks a client has
-     * @return
+     * @return Size of clients portfolio
      */
     public int getSize(){
         return clientAssets.size();

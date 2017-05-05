@@ -50,7 +50,7 @@ public class Run {
         {8284,0,7348,6000,5735,8789,0,9446,0,7102,1042,5482,4548,0,5441,7604,0,7648,0,7513}};
         
     /**
-     *
+     * Constructor
      */
     public Run(){
         exchange = new TradingExchange();
@@ -59,7 +59,7 @@ public class Run {
     
     /**
      *
-     * @param args
+     * @param args No args are used
      */
     public static void main(String[] args) {
         Run run = new Run();
@@ -153,9 +153,9 @@ public class Run {
                     exchange.addToBuy(randomTraders.get(i).getClient(j).getStockToBuy());
                 }
             }
-               exchange.trade(portfolios);
             }
             //System.out.println(market.isHoliday() + "-" + market.getWeekdayName(market.getWeekdays(), market.getWeekday()) + " " + market.getDay() + "-" + market.getMonth() + " " + String.format("%02d",market.getHour()) + ":" + String.format("%02d", market.getMinute()));
         }
+        //exchange.trade(portfolios);
     }
 }

@@ -22,7 +22,7 @@ public class TradingExchange {
     private HashMap<Stock,Integer> supplyDemand;
     
     /**
-     *
+     * Class constructor
      */
     public TradingExchange(){
         forSale = new HashMap();
@@ -33,7 +33,7 @@ public class TradingExchange {
     /**
      * Big trade method to be called each iteration of the program.
      * This method is incomplete, it cannot handle any instances where a portfolio cannot sell / buy everything it wants to.
-     * @param clients
+     * @param clients Arraylist of clients that will trade
      */
     public void trade(ArrayList<Portfolio> clients){
         for(Portfolio p : clients){ 
@@ -55,8 +55,8 @@ public class TradingExchange {
 
     /**
      * Get method to return the share index
-     * @param companies
-     * @return
+     * @param companies Arraylist of all companies still in trade
+     * @return The calculated share index
      */
     public float getShareIndex(ArrayList<Company> companies) {
         for(Company company: companies){
@@ -68,7 +68,7 @@ public class TradingExchange {
     
     /**
      * Method to add stocks to the forSale hashmap
-     * @param toSell
+     * @param toSell Hashmap of stocks that are to be sold
      */
     public void addForSale(HashMap<Stock,Integer> toSell){
         
@@ -89,7 +89,7 @@ public class TradingExchange {
     
     /**
      * Method to add stocks to the toBuy hashmap
-     * @param forPurchase
+     * @param forPurchase Hashmap of stocks that are to be bought
      */
     public void addToBuy(HashMap<Stock,Integer> forPurchase){
         for(Map.Entry<Stock,Integer> entry : forPurchase.entrySet()) {
@@ -109,7 +109,7 @@ public class TradingExchange {
 
     /**
      * Get method to return the forSale hashmap
-     * @return
+     * @return The forSale hashmap
      */
     public HashMap<Stock, Integer> getForSale() {
         return forSale;
@@ -117,7 +117,7 @@ public class TradingExchange {
     
     /**
      * Method to calculate the total supply and demand
-     * @param companyList
+     * @param companyList The complete list of active companies
      */
     public void calculateSupplyDemand(ArrayList<Company> companyList){
         

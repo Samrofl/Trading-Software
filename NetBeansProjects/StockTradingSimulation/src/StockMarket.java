@@ -179,7 +179,7 @@ public class StockMarket {
 
     /**
      * Setter method to assign a holiday
-     * @param holiday
+     * @param holiday Boolean value for whether it is a holiday or not
      */
     public void setHoliday(boolean holiday) {
         this.holiday = holiday;
@@ -187,7 +187,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the month
-     * @return
+     * @return The current month
      */
     public int getMonth() {
         return month;
@@ -195,7 +195,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the day
-     * @return
+     * @return The current day
      */
     public int getDay() {
         return day;
@@ -203,7 +203,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the hour
-     * @return
+     * @return The current hour
      */
     public int getHour() {
         return hour;
@@ -211,7 +211,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the minute
-     * @return
+     * @return The current minute
      */
     public int getMinute() {
         return minute;
@@ -219,7 +219,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the leap year
-     * @return
+     * @return Whether it is a leap year or not
      */
     public boolean getLeapYear() {
         return isLeapYear;
@@ -227,7 +227,7 @@ public class StockMarket {
     
     /**
      * Getter method to return the weekday
-     * @return
+     * @return The current weekday
      */
     public int getWeekday() {
         return weekday;
@@ -235,7 +235,7 @@ public class StockMarket {
 
     /**
      * Getter method to return the weekdays array
-     * @return
+     * @return The weekday array
      */
     public String[] getWeekdays() {
         return weekdays;
@@ -243,9 +243,9 @@ public class StockMarket {
 
     /**
      * This method returns the correct string for the day of the week on any given day in the year.
-     * @param array
-     * @param i
-     * @return
+     * @param array The weekday array
+     * @param i The weekday it is by number
+     * @return The name of the weekday
      */
     public String getWeekdayName(String[] array, int i) {
         return array[i];
@@ -253,7 +253,7 @@ public class StockMarket {
 
     /**
      * Getter method to find if it is a holiday or not
-     * @return
+     * @return Whether it is a holiday or not
      */
     public boolean isHoliday() {
         return holiday;
@@ -261,7 +261,7 @@ public class StockMarket {
 
     /**
      * Getter method for the market type
-     * @return
+     * @return The market type
      */
     public MarketType getMarketType() {
         return marketType;
