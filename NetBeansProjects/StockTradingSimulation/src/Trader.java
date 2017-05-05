@@ -17,9 +17,9 @@ public abstract class Trader
     
     public abstract void trade();
     
-    public abstract void buyStock();
+    public abstract void buy();
     
-    public abstract void sellStock();
+    public abstract void sell();
     
     public abstract void makeOffer();
     

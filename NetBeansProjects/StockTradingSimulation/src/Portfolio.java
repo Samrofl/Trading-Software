@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Portfolio 
@@ -6,19 +7,24 @@ public class Portfolio
     private static int counter=0;
     private int clientID;
     private String clientName;
-    private int clientCash;
+    private float clientCash;
     private final HashMap<Stock,Integer> clientAssets;
+    private HashMap<Stock,Integer> stockToSell;
+    private HashMap<Stock,Integer> stockToBuy;
+    ArrayList<Stock> keysAsArray;
     private RiskLevel clientRisk;
     
     // class constructors  
-    public Portfolio(String name, int cash, RiskLevel Risk) 
+    public Portfolio(String name, float cash, RiskLevel risk) 
     {
         counter++;
         clientID=counter;
         clientName = name;
         clientCash = cash;
-        clientRisk = Risk;
+        clientRisk = risk;
         clientAssets = new HashMap<>();
+        stockToSell = new HashMap<>();
+        stockToBuy = new HashMap<>();
     }
 
     // class methods
@@ -36,29 +42,28 @@ public class Portfolio
     }
     
     // this method is used to see what the current amount of cash the client has in their portfolio
-    public int getCash()
+    public float getCash()
     {
         return clientCash;
     }
     
     // this method is used to add more cash to the clients portfolio
-    public void addCash(int cash)
+    public void addCash(float cash)
     {
         clientCash += cash;
     }
     
     // this method is used to take out money from the clients portfolio
     // note if you try to withdraw more cash the client currently has then this method returns 0.
-    public int withdrawCash(int amountToWithDraw)
+    public void withdrawCash(float amountToWithDraw)
     {
         if ((clientCash - amountToWithDraw) >= 0)
         {
             clientCash = clientCash - amountToWithDraw;
-            return amountToWithDraw;
         }
         else
         {
-            return 0;
+            System.out.println("WITHDRAW TOO MUCH");
         }   
     }
     
@@ -69,7 +74,7 @@ public class Portfolio
         int i=1;
         for(Stock s : clientAssets.keySet()) 
         {
-            float stockWorth = s.getStockPrice() * clientAssets.get(s);
+            float stockWorth = s.getPrice() * clientAssets.get(s);
             total += stockWorth;
         }
         return total;
@@ -97,6 +102,10 @@ public class Portfolio
         return clientID;
     }
     
+    public int getStockCount(Stock s){
+        return clientAssets.get(s);
+    }
+    
     // this method is used to add stock in the clients portfolio
     // if the stockToAdd parameter already exists in the portfolio then this method increases that stock amount by the 'amount' parameter
     // if the stockToAdd parameter does not exist this method creates a new key value pair consisting of the stockToAdd + amount parameters
@@ -112,6 +121,7 @@ public class Portfolio
         {
             clientAssets.put(stockToAdd, amount);
         }
+        keysAsArray = new ArrayList<>(clientAssets.keySet());
     }
     
     // this method is used to remove stock from the clients portfolio
@@ -126,6 +136,13 @@ public class Portfolio
             if (currentStockQuantity - amountToSell >= 0) 
             {
                 int newStockQuantity = currentStockQuantity - amountToSell;
+                if (!stockToSell.containsKey(stockToBeSold)){
+                    //Test
+                    stockToSell.put(stockToBeSold,amountToSell);
+                } else{
+                    amountToSell+=stockToSell.get(stockToBeSold);
+                    stockToSell.put(stockToBeSold,amountToSell);
+                }
                 clientAssets.put(stockToBeSold, newStockQuantity);
                 return true;
             }
@@ -133,16 +150,46 @@ public class Portfolio
         return false;
     }
     
+    public void buyStock(Stock stockToBeBought, int amountToBuy){
+        if (!stockToBuy.containsKey(stockToBeBought)){
+                stockToBuy.put(stockToBeBought,amountToBuy);
+            } else{
+                amountToBuy+=stockToBuy.get(stockToBeBought);
+                stockToBuy.put(stockToBeBought,amountToBuy);
+            }
+    }
+    
     // this method searches through each stock in the clients portfolio and if a stock has a price of 0 it removes that stock from the portfolio.
     public void removeInsolventStock()
     {
         for (Stock s : clientAssets.keySet()) 
         {
-            if (s.getStockPrice() == 0) 
+            if (s.getPrice() == 0) 
             {
                 clientAssets.remove(s);
             }
         }
+        keysAsArray = new ArrayList<>(clientAssets.keySet());
+    }
+    
+    //Returns the stock based on integer value to find in the arraylist.
+    //Used for selling / buying.
+    public Stock getStock(int i){
+        return keysAsArray.get(i);
+    }
+    
+    //Returns stockToSell hashmap
+    public HashMap<Stock,Integer> getToBeSold(){
+        return stockToSell;
+    }
+
+    public HashMap<Stock, Integer> getStockToBuy() {
+        return stockToBuy;
+    }
+    
+    
+    public int getSize(){
+        return clientAssets.size();
     }
 }
 

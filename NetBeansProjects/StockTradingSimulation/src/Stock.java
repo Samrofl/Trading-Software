@@ -34,7 +34,7 @@ public class Stock
     }
     
     // this method returns the sock objects current stockPrice value
-    public float getStockPrice()
+    public float getPrice()
     {
         return stockPrice;
     }
